@@ -1,0 +1,5 @@
+.env
+/static/
+
+# Python caching
+__pycache__/
