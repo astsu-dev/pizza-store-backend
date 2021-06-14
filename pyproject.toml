@@ -10,6 +10,7 @@ fastapi = "^0.65.2"
 pydantic = "^1.8.2"
 python-dotenv = "^0.17.1"
 SQLAlchemy = {extras = ["mypy"], version = "^1.4.18"}
+asyncpg = "^0.23.0"
 
 [tool.poetry.dev-dependencies]
 mypy = "^0.902"
