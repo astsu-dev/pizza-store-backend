@@ -71,3 +71,19 @@ class ICategoryCRUD(Protocol):
         Returns:
             Category: created category
         """
+
+    @classmethod
+    async def delete_category(cls, session: AsyncSession, id: int) -> None:
+        """Deletes category by id.
+
+        NOTE: Does not commit.
+
+        Example:
+            >>> crud = CategoryCRUD()
+            >>> await crud.delete_category(session, id=1)
+            >>> await session.commit()
+
+        Args:
+            session (AsyncSession): sqlalchemy session
+            id (int): category id
+        """

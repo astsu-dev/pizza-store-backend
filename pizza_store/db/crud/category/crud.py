@@ -1,7 +1,7 @@
 from typing import Optional
 
 from pizza_store.db.models.category import Category
-from sqlalchemy import select
+from sqlalchemy import delete, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 
@@ -62,7 +62,7 @@ class CategoryCRUD:
 
     @classmethod
     def add_category(cls, session: AsyncSession, name: str) -> Category:
-        """Creates category model and adds to session.
+        """Creates category and adds to session.
 
         NOTE: Does not commit.
 
@@ -84,3 +84,22 @@ class CategoryCRUD:
         category = Category(name=name)
         session.add(category)
         return category
+
+    @classmethod
+    async def delete_category(cls, session: AsyncSession, id: int) -> None:
+        """Deletes category by id.
+
+        NOTE: Does not commit.
+
+        Example:
+            >>> crud = CategoryCRUD()
+            >>> await crud.delete_category(session, id=1)
+            >>> await session.commit()
+
+        Args:
+            session (AsyncSession): sqlalchemy session
+            id (int): category id
+        """
+
+        stmt = delete(Category).where(Category.id == id)
+        await session.execute(stmt)
