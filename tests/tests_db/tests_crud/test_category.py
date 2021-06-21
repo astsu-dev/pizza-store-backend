@@ -30,8 +30,7 @@ async def test_get_category() -> None:
     assert res == 1
 
 
-@pytest.mark.asyncio
-async def test_add_category() -> None:
+def test_add_category() -> None:
     session = mock.Mock()
 
     CategoryCRUD.add_category(session, name="Test")
