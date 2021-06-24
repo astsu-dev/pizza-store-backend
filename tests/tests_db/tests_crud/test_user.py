@@ -3,6 +3,8 @@ from unittest import mock
 
 import pytest
 from pizza_store.db.crud.user import UserCRUD
+from pizza_store.db.models import User
+from sqlalchemy import delete, select
 
 
 def test_add_user() -> None:
@@ -31,6 +33,9 @@ async def test_get_user() -> None:
         session, id=uuid.UUID("7076a9b6-3a67-46cf-889d-f1ddc2cb2e68")
     )
     assert res == 1
+    assert str(session.execute.await_args.args[0]) == str(
+        select(User).where(User.id == uuid.UUID("7076a9b6-3a67-46cf-889d-f1ddc2cb2e68"))
+    )
 
 
 @pytest.mark.asyncio
@@ -44,6 +49,9 @@ async def test_get_user_by_name() -> None:
 
     res = await UserCRUD.get_user_by_name(session, username="John")
     assert res == 1
+    assert str(session.execute.await_args.args[0]) == str(
+        select(User).where(User.username == "John")
+    )
 
 
 @pytest.mark.asyncio
@@ -57,6 +65,9 @@ async def test_get_user_by_email() -> None:
 
     res = await UserCRUD.get_user_by_email(session, email="example@example.com")
     assert res == 1
+    assert str(session.execute.await_args.args[0]) == str(
+        select(User).where(User.email == "example@example.com")
+    )
 
 
 @pytest.mark.asyncio
@@ -66,4 +77,6 @@ async def test_delete_user() -> None:
     await UserCRUD.delete_user(
         session, id=uuid.UUID("7076a9b6-3a67-46cf-889d-f1ddc2cb2e68")
     )
-    session.execute.assert_called_once()
+    assert str(session.execute.await_args.args[0]) == str(
+        delete(User).where(User.id == uuid.UUID("7076a9b6-3a67-46cf-889d-f1ddc2cb2e68"))
+    )
