@@ -10,7 +10,7 @@ def test_add_product() -> None:
     session = mock.Mock()
 
     ProductCRUD.add_product(
-        session, category_id=1, name="Test", weight=100, price=10_000
+        session, category_id=1, name="Test", weight=100, price=10_000, image="test.jpg"
     )
     session.add.assert_called_once()
 

@@ -1,4 +1,4 @@
-from typing import Optional, Protocol
+from typing import Optional
 
 from pizza_store.db.models.product import Product
 from sqlalchemy import delete, select
@@ -12,13 +12,19 @@ class ProductCRUD:
         >>> crud = ProductCRUD()
         >>> products = await crud.get_products(session, limit=2)
         >>> print(products)
-        [Product(id=1, category_id=1, name="Tea", weight: 100, price=5_000),
-         Product(id=2, category_id=1, name="Coffee", weight: 100, price=5_000)]
+        [Product(id=1, category_id=1, name="Tea", weight: 100, price=5_000, image="tea.jpg"),
+         Product(id=2, category_id=1, name="Coffee", weight: 100, price=5_000, image="coffee.jpg")]
     """
 
     @classmethod
     def add_product(
-        cls, session: AsyncSession, category_id: int, name: str, weight: int, price: int
+        cls,
+        session: AsyncSession,
+        category_id: int,
+        name: str,
+        weight: int,
+        price: int,
+        image: str,
     ) -> Product:
         """Creates product model and adds to session.
 
@@ -26,10 +32,10 @@ class ProductCRUD:
 
         Example:
             >>> crud = ProductCRUD()
-            >>> product = crud.add_product(session, category_id=1, name="Tea", weight: 100, price=5_000)
+            >>> product = crud.add_product(session, category_id=1, name="Tea", weight: 100, price=5_000, image="tea.jpg")
             >>> await session.commit()
             >>> print(product)
-            Product(id=1, category_id=1, name="Tea", weight: 100, price=5_000)
+            Product(id=1, category_id=1, name="Tea", weight: 100, price=5_000, image="tea.jpg")
 
         Args:
             session (AsyncSession): sqlalchemy session
@@ -37,13 +43,14 @@ class ProductCRUD:
             name (str): product name
             weight (int): weight in grams
             price (int): price in cents
+            image (str): image name
 
         Returns:
             Product: created product
         """
 
         product = Product(
-            category_id=category_id, name=name, weight=weight, price=price
+            category_id=category_id, name=name, weight=weight, price=price, image=image
         )
         session.add(product)
 
@@ -85,7 +92,8 @@ class ProductCRUD:
         >>> crud = ProductCRUD()
         >>> products = await crud.get_products(session, limit=2)
         >>> print(products)
-        [Product(id=1, category_id=1, name="Tea", weight: 100, price=5_000), Product(id=2, category_id=1, name="Coffee", weight: 100, price=5_000)]
+        [Product(id=1, category_id=1, name="Tea", weight: 100, price=5_000, image="test.jpg"),
+         Product(id=2, category_id=1, name="Coffee", weight: 100, price=5_000, image="test.jpg")]
 
         Args:
             session (AsyncSession): sqlalchemy session

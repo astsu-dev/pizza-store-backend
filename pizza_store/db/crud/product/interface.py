@@ -39,7 +39,13 @@ class IProductCRUD(Protocol):
 
     @classmethod
     def add_product(
-        cls, session: AsyncSession, category_id: int, name: str, weight: int, price: int
+        cls,
+        session: AsyncSession,
+        category_id: int,
+        name: str,
+        weight: int,
+        price: int,
+        image: str,
     ) -> Product:
         """Creates product model and adds to session.
 
@@ -51,6 +57,7 @@ class IProductCRUD(Protocol):
             name (str): product name
             weight (int): weight in grams
             price (int): price in cents
+            image (str): image name
 
         Returns:
             Product: created product
