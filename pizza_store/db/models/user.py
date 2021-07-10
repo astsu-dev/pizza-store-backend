@@ -1,6 +1,6 @@
 import uuid
 
-from pizza_store.db.db import Base
+from pizza_store.db.models.base import Base
 from sqlalchemy import Column, String
 from sqlalchemy.dialects.postgresql import UUID
 

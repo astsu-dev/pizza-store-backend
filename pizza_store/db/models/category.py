@@ -1,4 +1,4 @@
-from pizza_store.db.db import Base
+from pizza_store.db.models.base import Base
 from sqlalchemy import Column, Integer, String
 
 

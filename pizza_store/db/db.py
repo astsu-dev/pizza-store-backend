@@ -1,7 +1,7 @@
 from pizza_store.db.models import *
 from pizza_store.settings import settings
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
-from sqlalchemy.orm import declarative_base, sessionmaker
+from sqlalchemy.orm import sessionmaker
 
 db_url = (
     f"postgresql+asyncpg://{settings.POSTGRES_USER}:{settings.POSTGRES_PASSWORD}"
@@ -9,9 +9,11 @@ db_url = (
 )
 engine = create_async_engine(db_url, echo=True)
 async_session = sessionmaker(
-    engine, autoflush=False, autocommit=False, class_=AsyncSession
+    engine,
+    autoflush=False,
+    autocommit=False,
+    class_=AsyncSession,
 )
-Base = declarative_base()
 
 
 async def init_models() -> None:
