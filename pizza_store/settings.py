@@ -6,6 +6,7 @@ class Settings(BaseSettings):
     SERVER_PORT: int
     JWT_SECRET: str
     JWT_ALGORITHM: str = "HS256"
+    JWT_EXPIRES_IN: int
 
     POSTGRES_USER: str
     POSTGRES_PASSWORD: str
