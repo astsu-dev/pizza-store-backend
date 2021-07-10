@@ -11,4 +11,3 @@ services:
 
 volumes:
   postgres-volume:
-  test-postgres-volume:
