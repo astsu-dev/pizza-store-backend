@@ -13,6 +13,7 @@ async_session = sessionmaker(
     autoflush=False,
     autocommit=False,
     class_=AsyncSession,
+    expire_on_commit=False,
 )
 
 
