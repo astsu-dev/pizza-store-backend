@@ -11,6 +11,15 @@ class UserBase(BaseModel):
 
 
 class UserCreate(UserBase):
+    """User register model"""
+
+    password: str
+
+
+class UserIn(BaseModel):
+    """User login model."""
+
+    username: str
     password: str
 
 
