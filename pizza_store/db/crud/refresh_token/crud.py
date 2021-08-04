@@ -12,24 +12,24 @@ class RefreshTokenCRUD:
 
     @classmethod
     async def get_refresh_token(
-        cls, session: AsyncSession, user_id: uuid.UUID
+        cls, session: AsyncSession, token: uuid.UUID
     ) -> Optional[RefreshToken]:
-        """Fetchs refresh token by user id.
+        """Fetches refresh token by token.
 
         Example:
-            >>> token = await RefreshTokenCRUD.get_refresh_token(session, user_id=uuid.UUID("x-x-x-x-x"))
+            >>> token = await RefreshTokenCRUD.get_refresh_token(session, token=uuid.UUID("x-x-x-x-x"))
             >>> token
             RefreshToken(user_id=uuid.UUID("x-x-x-x-x"), token=uuid.UUID("x-x-x-x-x"), expires_at=datetime.datetime(2021, 12, 12, 15))
 
         Args:
             session (AsyncSession): sqlalchemy session
-            user_id (uuid.UUID)
+            token (uuid.UUID)
 
         Returns:
             Optional[RefreshToken]: if None refresh token does not exist
         """
 
-        stmt = select(RefreshToken).where(RefreshToken.user_id == user_id)
+        stmt = select(RefreshToken).where(RefreshToken.token == token)
         res = await session.execute(stmt)
 
         return res.scalars().first()

@@ -21,12 +21,12 @@ async def test_get_refresh_token() -> None:
     session.execute.return_value = result
 
     res = await RefreshTokenCRUD.get_refresh_token(
-        session, user_id=uuid.UUID("ee2a39ce-3812-4872-b17a-35b9c43667d3")
+        session, token=uuid.UUID("ee2a39ce-3812-4872-b17a-35b9c43667d3")
     )
     assert res == 1
     assert str(session.execute.await_args.args[0]) == str(
         select(RefreshToken).where(
-            RefreshToken.user_id == uuid.UUID("ee2a39ce-3812-4872-b17a-35b9c43667d3")
+            RefreshToken.token == uuid.UUID("ee2a39ce-3812-4872-b17a-35b9c43667d3")
         )
     )
 

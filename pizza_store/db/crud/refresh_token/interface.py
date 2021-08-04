@@ -11,13 +11,13 @@ class IRefreshTokenCRUD(Protocol):
 
     @classmethod
     async def get_refresh_token(
-        cls, session: AsyncSession, user_id: uuid.UUID
+        cls, session: AsyncSession, token: uuid.UUID
     ) -> Optional[RefreshToken]:
-        """Fetchs refresh token by user id.
+        """Fetches refresh token by token.
 
         Args:
             session (AsyncSession): sqlalchemy session
-            user_id (uuid.UUID)
+            token (uuid.UUID)
 
         Returns:
             Optional[RefreshToken]: if None refresh token does not exist
