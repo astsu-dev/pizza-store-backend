@@ -381,6 +381,17 @@ python-versions = "*"
 cli = ["click (>=5.0)"]
 
 [[package]]
+name = "python-multipart"
+version = "0.0.5"
+description = "A streaming multipart parser for Python"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+six = ">=1.4.0"
+
+[[package]]
 name = "regex"
 version = "2021.4.4"
 description = "Alternative regular expression module, to replace re."
@@ -526,7 +537,7 @@ standard = ["websockets (>=9.1)", "httptools (>=0.2.0,<0.3.0)", "watchgod (>=0.6
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "c2e1819b52575957a35f2e8facf5d07636ddb486bfbbf775440955765c5bfb3b"
+content-hash = "89758087ee38b28bdfe4b18071cf6cc274e84c960a5b166a4f21e3af64d5134a"
 
 [metadata.files]
 appdirs = [
@@ -813,6 +824,9 @@ pytest-asyncio = [
 python-dotenv = [
     {file = "python-dotenv-0.17.1.tar.gz", hash = "sha256:b1ae5e9643d5ed987fc57cc2583021e38db531946518130777734f9589b3141f"},
     {file = "python_dotenv-0.17.1-py2.py3-none-any.whl", hash = "sha256:00aa34e92d992e9f8383730816359647f358f4a3be1ba45e5a5cefd27ee91544"},
+]
+python-multipart = [
+    {file = "python-multipart-0.0.5.tar.gz", hash = "sha256:f7bb5f611fc600d15fa47b3974c8aa16e93724513b49b5f95c81e6624c83fa43"},
 ]
 regex = [
     {file = "regex-2021.4.4-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:619d71c59a78b84d7f18891fe914446d07edd48dc8328c8e149cbe0929b4e000"},
