@@ -1,3 +1,4 @@
+from pizza_store.models.category import Category, CategoryCreate
 from pizza_store.models.user import (
     Token,
     TokenResponse,
@@ -16,4 +17,6 @@ __all__ = [
     "UserInToken",
     "Token",
     "TokenResponse",
+    "Category",
+    "CategoryCreate",
 ]
