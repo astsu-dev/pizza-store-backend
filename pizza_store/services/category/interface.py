@@ -13,24 +13,21 @@ class ICategoryService(Protocol):
             List[models.Category]
         """
 
-        ...
-
-    async def add_category(self, name: str) -> models.Category:
+    async def add_category(
+        self, category_create: models.CategoryCreate
+    ) -> models.Category:
         """Creates category, add to db.
 
         Args:
-            name (str): category name
+            category_create (models.CategoryCreate): data for create category
 
         Returns:
             models.Category: created category
         """
 
-    async def delete_category(self, id: int) -> models.Category:
+    async def delete_category(self, id: int) -> None:
         """Deletes category from db.
 
         Args:
             id (int): category id
-
-        Returns:
-            models.Category: deleted category
         """
