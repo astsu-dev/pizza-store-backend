@@ -35,20 +35,22 @@ $ pip install -r requirements-dev.txt
 
 You should create .env file for pass environment variables.
 
-List of variables:
+Variables:
 
-- SERVER_HOST - application server host. Has not default value;
-- SERVER_PORT - application server port. Has not default value;
-- JWT_SERCRET - application jwt secret key. Has not default value;
-- JWT_ALOGRITHM - application jwt algorithm. Default value is "HS256";
-- JWT_EXPIRES_IN - application jwt access token lifetime. Has no default value;
-- JWT_REFRESH_TOKEN_EXPIRES_IN - application jwt refresh lifetime. Has no default value;
-- POSTGRES_USER - database username. Has no default value;
-- POSTGRES_PASSWORD - database password. Has no default value;
-- POSTGRES_DB - database name. Has no default value;
-- POSTGRES_HOST - database host for application. Has no default value;
-- POSTGRES_PORT - database port. Has no default value;
-- NGINX_PORT - port which nginx will be listen. Has no default value.
+| Variable                     | Description                                        | Required | Default value |
+|------------------------------|----------------------------------------------------|----------|---------------|
+| SERVER_HOST                  | Application server host.                           | Yes      |               |
+| SERVER_PORT                  | Application server port.                           | Yes      |               |
+| JWT_SECRET                   | Application jwt secret key.                        | Yes      |               |
+| JWT_ALGORITHM                | Application jwt algorithm.                         | No       | HS256         |
+| JWT_EXPIRES_IN               | Application jwt access token lifetime in seconds.  | Yes      |               |
+| JWT_REFRESH_TOKEN_EXPIRES_IN | Application jwt refresh token lifetime in seconds. | Yes      |               |
+| POSTGRES_USER                | Database username.                                 | Yes      |               |
+| POSTGRES_PASSWORD            | Database password.                                 | Yes      |               |
+| POSTGRES_DB                  | Database name.                                     | Yes      |               |
+| POSTGRES_HOST                | Database host for application.                     | Yes      |               |
+| POSTGRES_PORT                | Database port.                                     | Yes      |               |
+| NGINX_PORT                   | Port which nginx will be listen.                   | Yes      |               |
 
 ## Docker
 
