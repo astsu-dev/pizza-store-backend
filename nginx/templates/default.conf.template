@@ -1,0 +1,15 @@
+server {
+    listen ${NGINX_PORT};
+
+    access_log /var/log/nginx/access.log;
+    error_log /var/log/nginx/error.log;
+    
+    location / {
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_pass ${NGINX_APP_BASE_URL};
+    }
+
+    location /static/ {
+        root /var/www/data;
+    }
+}
